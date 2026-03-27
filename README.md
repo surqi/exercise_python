@@ -1,2 +1,2 @@
 # exercise_python
-for school homework
+jUst for school homework
