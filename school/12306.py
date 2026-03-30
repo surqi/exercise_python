@@ -13,11 +13,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 @pytest.fixture( scope="function" )
 def driver():
-    # 提交最终代码脚本时，请将驱动路径换回官方路径"C:\\Users\\86153\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe"
-    service = Service(
-       # executable_path="C:\\Users\\86153\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe" )
-        executable_path=r"D:\ChromeDriver\chromedriver.exe")
-    driver = webdriver.Chrome( service=service )
+    chromedriver_path = os.getenv("CHROMEDRIVER_PATH", "chromedriver")
+    service = Service(chromedriver_path)
+    driver = webdriver.Chrome(service=service)
     driver.get( "https://www.12306.cn/index" )
     driver.maximize_window()
     driver.implicitly_wait( 10 )
